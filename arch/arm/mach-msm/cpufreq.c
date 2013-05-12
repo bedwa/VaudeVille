@@ -31,9 +31,9 @@
 #include <mach/cpufreq.h>
 
 #include "acpuclock.h"
-#ifdef CONFIG_PERFLOCK
+/*#ifdef CONFIG_PERFLOCK
 #include <mach/perflock.h>
-#endif
+#endif*/
 
 #ifdef CONFIG_SMP
 struct cpufreq_work_struct {
@@ -70,14 +70,14 @@ static int override_cpu;
 static int set_cpu_freq(struct cpufreq_policy *policy, unsigned int new_freq)
 {
 	int ret = 0;
-#ifdef CONFIG_PERFLOCK
+/*#ifdef CONFIG_PERFLOCK
 	int perf_freq = 0;
-#endif
+#endif*/
 	struct cpufreq_freqs freqs;
 	struct cpu_freq *limit = &per_cpu(cpu_freq_info, policy->cpu);
 
 	freqs.old = policy->cur;
-#ifdef CONFIG_PERFLOCK
+/*#ifdef CONFIG_PERFLOCK
 	perf_freq = perflock_override(policy, new_freq);
 	if (perf_freq) {
 		if (policy->cur == perf_freq)
@@ -85,9 +85,9 @@ static int set_cpu_freq(struct cpufreq_policy *policy, unsigned int new_freq)
 		else
 			freqs.new = perf_freq;
 	} else if (override_cpu) {
-#else
+#else*/
 	if (override_cpu) {
-#endif
+//#endif
 		if (policy->cur == policy->max)
 			return 0;
 		else

@@ -3015,7 +3015,7 @@ static struct msm_spm_platform_data msm_spm_data[] __initdata = {
 	},
 };
 
-#ifdef CONFIG_PERFLOCK
+/*#ifdef CONFIG_PERFLOCK
 static unsigned ville_perf_acpu_table[] = {
 	594000000, 
 	810000000, 
@@ -3046,7 +3046,7 @@ struct platform_device msm8960_device_perf_lock = {
                .platform_data = &perflock_pdata,
        },
 };
-#endif
+#endif*/
 
 static uint8_t l2_spm_wfi_cmd_sequence[] __initdata = {
 			0x00, 0x20, 0x03, 0x20,
@@ -3736,9 +3736,9 @@ static struct platform_device *common_devices[] __initdata = {
 	&htc_battery_pdev,
 #endif
 	&msm_tsens_device,
-#ifdef CONFIG_PERFLOCK
+/*#ifdef CONFIG_PERFLOCK
 	&msm8960_device_perf_lock,
-#endif
+#endif*/
 };
 
 static struct platform_device *ville_devices[] __initdata = {
